@@ -40,6 +40,25 @@ class Login extends Component {
         });
     }
 
+    getDashboard() {
+        alert('hello from the dashboard');
+        const token = localStorage.getItem('jwt');
+        window.addEventListener('popstate', e => console.log(e) );
+        history.pushState({success:true, myContent:'Dashboard pagee'}, '', URL+'/api/dashboard')
+        axios.get(URL+'/api/dashboard', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }).then(res => {
+            if(res && res.data && res.data.success) {
+                document.querySelector('h1.row').innerHTML = 'Dashboard';
+                document.querySelector('main').innerHTML = res.data.myContent + "<br><button onclick=\"getSettings()\">Settings</button>" +
+                "<button onclick=\"getPrices()\">Get prices</button>" +
+                "<button onclick=\"logOut()\">Log out</button>";
+            }
+        });
+    }
+
 
 
   render() {
@@ -48,12 +67,12 @@ class Login extends Component {
           <h1>Hello from Login</h1>
           <main>
             <div class="row">
-                <label for="username">Username</label>
+                <label for="username">Username: </label>
                 <input type="text" name="username" id="username"/>
             </div>
 
             <div class="row">
-                <label for="password">password</label>
+                <label for="password">Password: </label>
                 <input type="text" name="password" id="password"/>
             </div>
 

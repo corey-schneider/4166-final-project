@@ -73,3 +73,54 @@ li.dropdown {
     border-right: 1px solid #000000;
     border-bottom: 1px solid #000000;
 }
+
+
+
+/* Block 2 is 5% less than the length of the nav bar to make content fit underneath the bar */
+.block2 {
+    width: 55vw; /* 40% of the view width */
+    text-align: left;
+    margin: auto;
+}
+
+.container2 {
+	box-shadow: 0px 0px 30px gray;
+	background: #FFFFFF;
+	padding: 2rem !important;
+}
+
+
+
+
+/* FOOTER - thank you https://getbootstrap.com/2.3.2/examples/sticky-footer.html */
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 70%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by it's height */
+  margin: 0 auto 0px;
+}
+
+/* Set the fixed height of the footer here */
+#push,
+#footer {
+  height: 210px;
+}
+
+/* Lastly, apply responsive CSS fixes as necessary */
+@media (max-width: 767px) {
+  #footer {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+/* End of footer */
