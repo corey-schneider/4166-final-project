@@ -7,6 +7,7 @@
 - https://www.youtube.com/watch?v=fnpmR6Q5lEc&ab_channel=Simplilearn
 - https://www.kirupa.com/react/creating_single_page_app_react_using_react_router.htm
 - https://stackoverflow.com/a/47216863 (401/any error handler)
+- https://medium.com/better-programming/building-basic-react-authentication-e20a574d5e71 (authentication)
 
 ## TO DO:
 - remove Button component

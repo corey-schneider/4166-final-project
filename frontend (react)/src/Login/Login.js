@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import Navigation from '../Navigation/Navigation';
 import '../App2.css';
 import Button from '../Button/Button';
-import { NavLink } from "react-router-dom";
+import { HashRouter, NavLink } from "react-router-dom";
 import axios from "axios";
 
 
     let URL = 'http://localhost:3001'; // TODO change this when put on live web
+    let name = '';
 
 class Login extends Component {
 
@@ -28,7 +29,8 @@ class Login extends Component {
             if(res && res.data.success) {
                 const token = res.data.token;
                 localStorage.setItem('jwt', token);
-                alert('success.');
+                alert("success, "+res.data.username);
+                name = res.data.username;
                 this.getDashboard();
             }
         }, error => {
@@ -40,12 +42,12 @@ class Login extends Component {
         });
     }
 
-    getDashboard() {
-        alert('hello from the dashboard');
+    getDashboard(props) {
+        //alert("hello "+name+" from the dashboard");
         const token = localStorage.getItem('jwt');
         window.addEventListener('popstate', e => console.log(e) );
-        history.pushState({success:true, myContent:'Dashboard pagee'}, '', URL+'/api/dashboard')
-        axios.get(URL+'/api/dashboard', {
+        history.pushState({success:true, myContent:'Dashboard pagee'}, '', '/dashboard')
+        axios.get('/dashboard', {
             headers: {
                 'Authorization': `Bearer ${token}`
             }

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Navigation from "../Navigation/Navigation";
 import "../App2.css";
 
 import { Route, NavLink, HashRouter } from "react-router-dom";
@@ -10,6 +9,7 @@ import Login from "../Login/Login";
 import Register from "../Register/Register";
 
 class Main extends Component {
+	
 	render() {
 		return (
 			<HashRouter>
@@ -25,10 +25,10 @@ class Main extends Component {
 							<NavLink to="/dashboard">Dashboard</NavLink>
 						</li>
 						<li>
-							<a href="#">Configure budgets</a>
+							<a href="">Configure budgets</a>
 						</li>
 						<li>
-							<a href="#">[empty]</a>
+							<a href="">[empty]</a>
 						</li>
 						<li class="dropdown">
 							<NavLink to="/login">Log in</NavLink>
@@ -49,7 +49,7 @@ class Main extends Component {
 								<Route path="/login" component={Login} />
 								<Route path="/register" component={Register} />
 							</div>
-							
+
 						</div>
 					</div>
 				</div>

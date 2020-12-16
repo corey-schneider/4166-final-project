@@ -36,11 +36,6 @@ let users = [
         id: 2,
         username: 'test',
         password: '321'
-    },
-    {
-        id: 3,
-        username: 'blah',
-        password: 'hi'
     }
 ];
 
@@ -98,7 +93,7 @@ app.use(function (err, req, res, next) {
         res.status(401).json({
             success: false,
             officialError: err,
-            err: 'Username or password is incorrect 2'
+            err: 'Username or password is incorrect 2 (server.js message)'
         });
     } else {
         next(err);
