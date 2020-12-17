@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Navigation from '../Navigation/Navigation';
 import '../App2.css';
-import Button from '../Button/Button';
 import { HashRouter, NavLink } from "react-router-dom";
 import axios from "axios";
 
@@ -82,8 +81,8 @@ class Login extends Component {
                 <br/>
                 {/* <Button title="Login" onClick={() => this.handleLogin} /> */}
                 <button onClick={this.handleLogin}>Log in</button>
-                <Button title="Get Dashboard" />
-                <Button title="Settings" />
+                <button>Get Dashboard</button>
+                <button>Settings</button>
             </div>
         </main>
         <br/><br/><br/><p>Don't have an account? <NavLink to="/register">Sign up</NavLink> now!</p>

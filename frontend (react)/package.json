@@ -21,9 +21,6 @@
     "react-scripts": "4.0.1",
     "rxjs": "^6.6.3",
     "web-vitals": "^0.2.4",
-    "webpack": "^5.10.3",
-    "webpack-cli": "^4.2.0",
-    "webpack-dev-server": "^3.11.0",
     "yup": "^0.32.8"
   },
   "scripts": {
