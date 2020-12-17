@@ -12,3 +12,4 @@
 - ~~remove Button component~~
 - change localhost:3001 to something else when live app is deployed
 - ~~remove /backend-api folder - unused~~
+- color picker in Dashboard

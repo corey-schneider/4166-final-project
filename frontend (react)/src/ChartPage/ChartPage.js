@@ -9,37 +9,31 @@ function ChartPage() {
  const [data, setData] = useState([]);
  const [posts, setPosts] = useState([]);
 
- let title1 = [];
- let budget1 = [];
+ let title = [];
+ let budget = [];
+ let color = [];
 
  useEffect(() => {
 
-   axios.get("http://localhost:3001/budget").then(res => {
-       const ipl = res.data.myBudget;
-       console.log(res.data.myBudget);
+   axios.get("http://localhost:3001/api/budget").then(res => {
+       const ipl = res.data;
+       console.log(res.data);
      setPosts(ipl);
 
      ipl.forEach(record => {
-         title1.push(record.title);
-         budget1.push(record.budget);
+         title.push(record.title);
+         budget.push(record.budget);
+         color.push(record.backgroundColor);
        });
 
 
      setData({
        Data: {
-         labels: title1,
+         labels: title,
          datasets: [
            {
-             data: budget1,
-             backgroundColor: [
-                '#ffcd56',
-                '#ff6384',
-                '#36a2eb',
-                '#fd6b19',
-                '#f542e9',
-                '#42f55d',
-                '#42f5dd'
-             ]
+             data: budget,
+             backgroundColor: color
            }
          ]
        }
