@@ -7,6 +7,14 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
 
+//mongodb+srv://admin:372zzl7rmFSIUNVZ@cluster0.m5ybl.mongodb.net/test
+//mongodb://localhost:27017/budget
+
+const url = 'mongodb+srv://admin:372zzl7rmFSIUNVZ@cluster0.m5ybl.mongodb.net/database'
+const mongoose = require('mongoose');
+const budgetModel = require("./models/chart_schema");
+
+
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001');
     res.setHeader('Access-Control-Allow-Headers', 'Content-type,Authorization');
@@ -99,6 +107,55 @@ app.use(function (err, req, res, next) {
         next(err);
     }
 });
+
+
+
+app.get('/api/budget', (req, res) => {
+    //res.sendFile('budget-data2.json', {root: __dirname});
+
+    mongoose.connect(url, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }).then(() => {
+        budgetModel.find({})
+        .then((data) => {
+            res.json(data);
+            mongoose.connection.close();
+        }).catch((connectionError) => {
+            console.log(connectionError);
+        }).catch((connectionError) => {
+            console.log(connectionError);
+        })
+    })
+
+});
+
+app.post('/api/budget', (req, res) => {
+    mongoose.connect(url, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }).then(() => {
+        var budgetEntity = {
+            title: req.body.title,
+            budget: req.body.budget,
+            backgroundColor: req.body.backgroundColor
+        };
+
+        budgetModel.insertMany(budgetEntity)
+        .then((data) => {
+            res.json(data);
+            mongoose.connection.close();
+            console.log("Successfully communicated with database; connection closed");
+        }).catch((connectionError) => {
+            console.log(connectionError);
+        })
+    }).catch((connectionError) => {
+            console.log(connectionError);
+        })
+})
+
+
+
 
 app.listen(PORT, () => {
     console.log(`Serving on port ${PORT}`);
