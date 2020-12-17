@@ -13,6 +13,7 @@ const cors = require('cors');
 const url = 'mongodb+srv://admin:372zzl7rmFSIUNVZ@cluster0.m5ybl.mongodb.net/database'
 const mongoose = require('mongoose');
 const budgetModel = require("./models/chart_schema");
+const userModel = require("./models/user_schema");
 
 
 app.use((req, res, next) => {
