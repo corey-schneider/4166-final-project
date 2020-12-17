@@ -12,10 +12,10 @@ class Login extends Component {
 
     constructor(props) {
         super(props);
-        this.handleLogin = this.handleLogin.bind(this);
+        //this.handleLogin = this.handleLogin.bind(this);
     }
 
-    async handleLogin() {
+    async handleLogin2() {
         const data = {
             username: document.getElementById('username').value,
             password: document.getElementById('password').value,
@@ -29,6 +29,32 @@ class Login extends Component {
                 const token = res.data.token;
                 localStorage.setItem('jwt', token);
                 alert("success, "+res.data.username);
+                name = res.data.username;
+                this.getDashboard();
+            }
+        }, error => {
+            if(error.response.status === 401) {
+                alert('401 unauthorized error.');
+            } else {
+                alert(error.response.status+' error');
+            }
+        });
+    }
+    
+    async handleLogin() {
+        const data = {
+            username: document.getElementById('username').value,
+            password: document.getElementById('password').value,
+        };
+
+        axios.post(URL+'/users/authenticate', data).then(res => {
+            console.log(res);
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            if(res && res.data.success) {
+                const token = res.data.token;
+                localStorage.setItem('jwt', token);
+                alert("Success! "+res.data.username);
                 name = res.data.username;
                 this.getDashboard();
             }

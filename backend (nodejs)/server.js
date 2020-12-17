@@ -1,8 +1,11 @@
+require('rootpath')();
 const express = require('express');
 const app = express();
 
 const exjwt = require('express-jwt');
 const jwt = require('jsonwebtoken');
+const jwt2 = require('_helpers/jwt');
+const errorHandler = require('_helpers/error-handler');
 const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
@@ -19,6 +22,7 @@ app.use((req, res, next) => {
     next();
 });
 
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const PORT = 3001;
@@ -30,6 +34,9 @@ const jwtMW = exjwt({
     algorithms: ['HS256']
 });
 
+app.use(jwt2());
+app.use('/users', require('./users/users.controller'));
+app.use(errorHandler);
 
 
 let users = [

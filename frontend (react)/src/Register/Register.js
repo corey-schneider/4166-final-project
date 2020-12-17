@@ -1,54 +1,75 @@
-import React, { Component } from 'react';
-import '../App2.css';
+import React, { Component } from "react";
+import "../App2.css";
 import axios from "axios";
 
-let URL = 'http://localhost:3001'; // TODO change this when put on live web
- 
+let URL = "http://localhost:3001"; // TODO change this when put on live web
+
 class Register extends Component {
-  constructor(props) {
-    super(props);
+	constructor(props) {
+		super(props);
+	}
+	async handleRegistration() {
+		const data = {
+			firstName: document.getElementById("firstName").value,
+			lastName: document.getElementById("lastName").value,
+			username: document.getElementById("username").value,
+			password: document.getElementById("password").value,
+		};
+
+		axios.post(URL + "/users/register", data).then(
+			(res) => {
+				console.log(res);
+				document.getElementById("firstName").value = "";
+				document.getElementById("lastName").value = "";
+				document.getElementById("username").value = "";
+				document.getElementById("password").value = "";
+				//if(res && res.data.success) {
+				alert("Registration successful, " + res.data.username + "!");
+				//}
+			}, (error) => {
+				if (error.response.status === 400) {
+          alert("Please enter all required fields.")
+          //document.querySelector('main').innerHTML += "<b>Please enter data into all fields.</b>";
+				} else {
+					alert(error.response.status + " error");
+				}
+			}
+		);
+	}
+
+	render() {
+		return (
+			<div align="center">
+				<h1>Register</h1>
+				<main>
+					<div class="row">
+						<label for="firstName">First name: </label>
+						<input type="text" name="firstName" id="firstName" />
+					</div>
+					<div class="row">
+						<label for="lastName">Last name: </label>
+						<input type="text" name="lastName" id="lastName" />
+					</div>
+					<div class="row">
+						<label for="username">Username: </label>
+						<input type="text" name="username" id="username" />
+					</div>
+
+					<div class="row">
+						<label for="password">Password: </label>
+						<input type="text" name="password" id="password" />
+					</div>
+
+					<div>
+						<br />
+						<button onClick={this.handleRegistration}>
+							Sign up
+						</button>
+					</div>
+				</main>
+			</div>
+		);
+	}
 }
-  async handleRegistration() {
-    const data = {
-        username: document.getElementById('username').value,
-        password: document.getElementById('password').value,
-    };
 
-    axios.post(URL+'/api/register', data).then(res => {
-        console.log(res);
-        document.getElementById('username').value = '';
-        document.getElementById('password').value = '';
-        if(res && res.data.success) {
-            alert("Registration successful, "+res.data.username+"!");
-        }
-    }, error => {
-          alert(error.response.status+' error');
-    });
-}
-
-  render() {
-    return (
-        <div align="center">
-          <h1>Register</h1>
-          <main>
-            <div class="row">
-                <label for="username">Username: </label>
-                <input type="text" name="username" id="username"/>
-            </div>
-
-            <div class="row">
-                <label for="password">Password: </label>
-                <input type="text" name="password" id="password"/>
-            </div>
-
-            <div>
-                <br/>
-                <button onClick={this.handleRegistration}>Sign up</button>
-            </div>
-        </main>
-        </div>
-    );
-  }
-}
- 
 export default Register;

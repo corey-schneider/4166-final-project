@@ -24,15 +24,19 @@ class Dashboard extends Component {
     }
 
     axios.post(URL+'/api/budget', data)
-    .then(res => (
-      alert("Successfully added " + budgetName.value + " for $" + amount.value + " with color "+color.value+" to your budget!"),
-      window.location.reload(2500)
-      )
+    .then(res => {
+      alert("Successfully added " + budgetName.value + " for $" + amount.value + " with color "+color.value+" to your budget!");
+      window.location.reload(2500);
+    }
       
       ).catch(error => {
         alert("ERROR. attached: "+error);
       });
     
+  }
+
+  async handleDeleteAll() {
+    alert("still working on it");
   }
 
 
