@@ -7,6 +7,8 @@ import Dashboard from "../Dashboard/Dashboard";
 import HomePage from "../HomePage/HomePage";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
+import Secret from "../Secret/Secret";
+import withAuth from "../withAuth"; //TODO move this
 
 class Main extends Component {
 	
@@ -28,7 +30,7 @@ class Main extends Component {
 							<a href="">Configure budgets</a>
 						</li>
 						<li>
-							<a href="">[empty]</a>
+							<NavLink to="/secret">Secret</NavLink>
 						</li>
 						<li className="dropdown">
 							<NavLink to="/login">Log in</NavLink>
@@ -48,6 +50,7 @@ class Main extends Component {
 								<Route path="/dashboard" component={Dashboard} />
 								<Route path="/login" component={Login} />
 								<Route path="/register" component={Register} />
+								<Route path="/secret" component={withAuth(Secret)} />
 							</div>
 
 						</div>

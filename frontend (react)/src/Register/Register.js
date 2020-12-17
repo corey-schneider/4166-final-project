@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import "../App2.css";
 import axios from "axios";
+// import Popup from 'react-popup';
+// import ReactDOM from 'react-dom';
 
 let URL = "http://localhost:3001"; // TODO change this when put on live web
 
 class Register extends Component {
+  
 	constructor(props) {
 		super(props);
 	}
@@ -28,7 +31,7 @@ class Register extends Component {
 				//}
 			}, (error) => {
 				if (error.response.status === 400) {
-          alert("Please enter all required fields.")
+          alert("Please enter data into all fields.")
           //document.querySelector('main').innerHTML += "<b>Please enter data into all fields.</b>";
 				} else {
 					alert(error.response.status + " error");
@@ -41,6 +44,7 @@ class Register extends Component {
 		return (
 			<div align="center">
 				<h1>Register</h1>
+        <i>(All fields are required)</i><br/><br/>
 				<main>
 					<div class="row">
 						<label for="firstName">First name: </label>
@@ -68,7 +72,8 @@ class Register extends Component {
 					</div>
 				</main>
 			</div>
-		);
+    );
+    
 	}
 }
 

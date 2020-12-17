@@ -11,10 +11,14 @@ const path = require('path');
 const cors = require('cors');
 
 const db = require("./config/keys").mongoURI;
+//const budgetdb = require("./config/keys").mongo_budgetURI;
 const mongoose = require('mongoose');
 const budgetModel = require("./models/chart_schema");
 const userModel = require("./models/user_schema");
 
+
+const withAuth = require('./middleware');
+const cookieParser = require('cookie-parser');
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001');
@@ -26,7 +30,7 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const PORT = 3001;
-app.use(cors());
+app.use(cors({ origin: (origin, callback) => callback(null, true), credentials: true }));
 
 const secretKey = 'My super secret key';
 const jwtMW = exjwt({
@@ -38,43 +42,56 @@ app.use(jwt2());
 app.use('/users', require('./users/users.controller'));
 app.use(errorHandler);
 
+app.use(cookieParser());
 
-let users = [
-    {
-        id: 1,
-        username: 'corey',
-        password: '123'
-    },
-    {
-        id: 2,
-        username: 'test',
-        password: '321'
-    }
-];
 
-app.post('/api/login', (req, res) => {
-    const { username, password } = req.body;
+// let users = [
+//     {
+//         id: 1,
+//         username: 'corey',
+//         password: '123'
+//     },
+//     {
+//         id: 2,
+//         username: 'test',
+//         password: '321'
+//     }
+// ];
 
-    for (let user of users) {
-        if(username == user.username && password == user.password) {
-            let token = jwt.sign({ id: user.id, username: user.username }, secretKey, { expiresIn: '7d' });
-            res.json({
-                success: true,
-                err: null,
-                token,
-                username
-            });
-            break;
-        } else {
-            res.status(401).json({
-                success: false,
-                token: null,
-                err: 'Username or password incorrect'
-            });
-        }
-    }
+// app.post('/api/login', (req, res) => {
+//     const { username, password } = req.body;
+
+//     for (let user of users) {
+//         if(username == user.username && password == user.password) {
+//             let token = jwt.sign({ id: user.id, username: user.username }, secretKey, { expiresIn: '7d' });
+//             res.json({
+//                 success: true,
+//                 err: null,
+//                 token,
+//                 username
+//             });
+//             break;
+//         } else {
+//             res.status(401).json({
+//                 success: false,
+//                 token: null,
+//                 err: 'Username or password incorrect'
+//             });
+//         }
+//     }
     
-});
+// });
+
+//new
+app.get('/api/secret', withAuth, function(req, res) {
+    res.send('The password is potato');
+  });
+  app.get('/api/checkToken', withAuth, function(req, res) {
+    res.sendStatus(200);
+  });
+
+
+
 
 app.get('/api/dashboard', jwtMW, (req, res) => {
     res.json({

@@ -13,32 +13,64 @@ class Login extends Component {
     constructor(props) {
         super(props);
         //this.handleLogin = this.handleLogin.bind(this);
+        this.state = {
+            username : '',
+            password : ''
+        };
     }
 
-    async handleLogin2() {
-        const data = {
-            username: document.getElementById('username').value,
-            password: document.getElementById('password').value,
-        };
-
-        axios.post(URL+'/api/login2', data).then(res => {
-            console.log(res);
-            document.getElementById('username').value = '';
-            document.getElementById('password').value = '';
-            if(res && res.data.success) {
-                const token = res.data.token;
-                localStorage.setItem('jwt', token);
-                alert("success, "+res.data.username);
-                name = res.data.username;
-                this.getDashboard();
-            }
-        }, error => {
-            if(error.response.status === 401) {
-                alert('401 unauthorized error.');
-            } else {
-                alert(error.response.status+' error');
-            }
+    handleInputChange = (event) => {
+        const { value, name } = event.target;
+        this.setState({
+          [name]: value
         });
+      }
+
+    // async handleLogin2() {
+    //     const data = {
+    //         username: document.getElementById('username').value,
+    //         password: document.getElementById('password').value,
+    //     };
+
+    //     axios.post(URL+'/api/login2', data).then(res => {
+    //         console.log(res);
+    //         document.getElementById('username').value = '';
+    //         document.getElementById('password').value = '';
+    //         if(res && res.data.success) {
+    //             const token = res.data.token;
+    //             localStorage.setItem('jwt', token);
+    //             alert("success, "+res.data.username);
+    //             name = res.data.username;
+    //             this.getDashboard();
+    //         }
+    //     }, error => {
+    //         if(error.response.status === 401) {
+    //             alert('401 unauthorized error.');
+    //         } else {
+    //             alert(error.response.status+' error');
+    //         }
+    //     });
+    // }
+
+    onSubmit = (event) => {
+        event.preventDefault();
+        fetch(URL+"/users/authenticate", {
+            method: 'POST',
+            body: JSON.stringify(this.state),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+        }).then(res => {
+            if (res.status === 200) {
+                this.props.history.push('/');
+              } else {
+                const error = new Error(res.error);
+                throw error;
+              }
+        }).catch(err => {
+            console.error(err);
+            alert('Error logging in please try again');
+          });
     }
     
     async handleLogin() {
@@ -51,15 +83,20 @@ class Login extends Component {
             console.log(res);
             document.getElementById('username').value = '';
             document.getElementById('password').value = '';
-            if(res && res.data.success) {
-                const token = res.data.token;
-                localStorage.setItem('jwt', token);
-                alert("Success! "+res.data.username);
-                name = res.data.username;
-                this.getDashboard();
+            // if(res && res.data.success) {
+            //     const token = res.data.token;
+            //     localStorage.setItem('jwt', token);
+            //     alert("Success! "+res.data.username);
+            //     name = res.data.username;
+            //     this.getDashboard();
+            // }
+            if(res.status === 200) {
+                this.props.history.push('/');
             }
         }, error => {
-            if(error.response.status === 401) {
+            if(error.response.status === 400) {
+                alert('Invalid username or password.\nPlease check your credentials.');
+            } else if(error.response.status === 401) {
                 alert('401 unauthorized error.');
             } else {
                 alert(error.response.status+' error');
@@ -110,6 +147,32 @@ class Login extends Component {
             </div>
         </main>
         <br/><br/><br/><p>Don't have an account? <NavLink to="/register">Sign up</NavLink> now!</p>
+
+
+        <br/>
+
+        <form onSubmit={this.onSubmit}>
+        <h1>Login Below!</h1>
+        <input
+          type="username"
+          name="username"
+          placeholder="Enter username"
+          value={this.state.username}
+          onChange={this.handleInputChange}
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter password"
+          value={this.state.password}
+          onChange={this.handleInputChange}
+          required
+        />
+        <input type="submit" value="Submit"/>
+      </form>
+
+
         </div>
     );
   }
