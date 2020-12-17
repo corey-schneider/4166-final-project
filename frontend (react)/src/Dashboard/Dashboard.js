@@ -3,6 +3,7 @@ import Navigation from "../Navigation/Navigation";
 import "../App2.css";
 import ChartPage from "../ChartPage/ChartPage";
 import ColorPicker from "./ColorPicker";
+import JsonTable from "./JsonTable";
 import axios from "axios";
 
 
@@ -63,9 +64,9 @@ class Dashboard extends Component {
           <div align="center">
             <button onClick={this.handleDeleteAll}>Delete ALL</button>
           </div>
-          <br/>
+          <br/><hr/>
           <div align="center">
-            <p>Budgets:</p>
+            <JsonTable/>
           </div>
 				</main>
 

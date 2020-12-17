@@ -23,8 +23,10 @@ yarn-debug.log*
 yarn-error.log*
 
 # secrets
+....../backend*(nodejs)/config/keys.js
 ...../backend*(nodejs)/config/keys.js
 ..../backend*(nodejs)/config/keys.js
 .../backend*(nodejs)/config/keys.js
 ../backend*(nodejs)/config/keys.js
 ./backend*(nodejs)/config/keys.js
+/backend*(nodejs)/config/keys.js
