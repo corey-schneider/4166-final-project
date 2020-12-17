@@ -146,7 +146,7 @@ app.post('/api/budget', (req, res) => {
         .then((data) => {
             res.json(data);
             mongoose.connection.close();
-            console.log("Successfully communicated with database; connection closed");
+            console.log("Successfully communicated with database (budget); connection closed");
         }).catch((connectionError) => {
             console.log(connectionError);
         })
@@ -154,6 +154,78 @@ app.post('/api/budget', (req, res) => {
             console.log(connectionError);
         })
 })
+
+
+app.post('/api/register', (req, res) => {
+    mongoose.connect(url, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }).then(() => {
+        var registerEntity = {
+            username: req.body.username,
+            password: req.body.password
+        };
+
+        userModel.insertMany(registerEntity)
+        .then((data) => {
+            res.json(data);
+            mongoose.connection.close();
+            console.log("Successfully communicated with database (user registration); connection closed");
+        }).catch((connectionError) => {
+            console.log(connectionError);
+        })
+    }).catch((connectionError) => {
+            console.log(connectionError);
+        })
+})
+
+
+app.post('/api/login2', (req, res) => {
+
+    mongoose.connect(url, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }).then(() => {
+        var loginEntity = {
+            username: req.body.username,
+            password: req.body.password
+        };
+
+        userModel.findOne(loginEntity)
+        .then((data) => {
+            console.log("found "+data.name);
+            res.json(data);
+            mongoose.connection.close();
+            console.log("Successfully communicated with database (user login); connection closed");
+        }).catch((connectionError) => {
+            console.log(connectionError);
+        })
+    }).catch((connectionError) => {
+            console.log(connectionError);
+        })
+
+    // const { username, password } = req.body;
+
+    // for (let user of users) {
+    //     if(username == user.username && password == user.password) {
+    //         let token = jwt.sign({ id: user.id, username: user.username }, secretKey, { expiresIn: '7d' });
+    //         res.json({
+    //             success: true,
+    //             err: null,
+    //             token,
+    //             username
+    //         });
+    //         break;
+    //     } else {
+    //         res.status(401).json({
+    //             success: false,
+    //             token: null,
+    //             err: 'Username or password incorrect'
+    //         });
+    //     }
+    // }
+    
+});
 
 
 

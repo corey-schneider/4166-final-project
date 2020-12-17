@@ -30,9 +30,9 @@ class Main extends Component {
 						<li>
 							<a href="">[empty]</a>
 						</li>
-						<li class="dropdown">
+						<li className="dropdown">
 							<NavLink to="/login">Log in</NavLink>
-							<div class="dropdown-content">
+							<div className="dropdown-content">
 								<NavLink to="/register">Sign up</NavLink>
 							</div>
 						</li>

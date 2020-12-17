@@ -1,7 +1,7 @@
 //Thank you to https://stackoverflow.com/questions/60433572/how-to-use-axios-api-with-chart-js-and-react-js
 
 import React, { useState, useEffect } from "react";
-import { Pie } from "react-chartjs-2";
+import { Pie, Bar, Line } from "react-chartjs-2";
 import axios from "axios";
 
 function ChartPage() {
@@ -16,11 +16,11 @@ function ChartPage() {
  useEffect(() => {
 
    axios.get("http://localhost:3001/api/budget").then(res => {
-       const ipl = res.data;
+       const personalBudget = res.data;
        console.log(res.data);
-     setPosts(ipl);
+     setPosts(personalBudget);
 
-     ipl.forEach(record => {
+     personalBudget.forEach(record => {
          title.push(record.title);
          budget.push(record.budget);
          color.push(record.backgroundColor);
@@ -43,8 +43,18 @@ function ChartPage() {
  }, []);
  return (
    <div>
-       <h1>Hello from ChartPage</h1>
+       <br/><hr/><br/>
      <Pie
+     data={data.Data}
+     />
+     <hr/>
+     
+     <Bar
+     data={data.Data}
+     />
+     <hr/>
+     
+     <Line
      data={data.Data}
      />
    </div>

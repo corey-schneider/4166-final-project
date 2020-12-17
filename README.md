@@ -13,3 +13,12 @@
 - change localhost:3001 to something else when live app is deployed
 - ~~remove /backend-api folder - unused~~
 - color picker in Dashboard
+- homepage
+- log in / out
+- sign up (registration)
+- configure budgets
+    - add
+    - remove
+    - edit
+    - monthly
+- token expire after 60s

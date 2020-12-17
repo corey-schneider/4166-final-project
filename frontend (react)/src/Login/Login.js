@@ -21,7 +21,7 @@ class Login extends Component {
             password: document.getElementById('password').value,
         };
 
-        axios.post(URL+'/api/login', data).then(res => {
+        axios.post(URL+'/api/login2', data).then(res => {
             console.log(res);
             document.getElementById('username').value = '';
             document.getElementById('password').value = '';
