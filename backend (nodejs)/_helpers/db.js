@@ -5,9 +5,7 @@ mongoose.connect(process.env.MONGODB_URI || config.connectionString, connectionO
 mongoose.Promise = global.Promise;
 
 module.exports = {
-    User: require('../users/user.model'),
-    RefreshToken: require('../users/refresh-token.model'),
-    isValidId
+    User: require('../users/user.model')
 };
 
 function isValidId(id) {
