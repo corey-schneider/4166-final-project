@@ -7,10 +7,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
 
-//mongodb+srv://admin:372zzl7rmFSIUNVZ@cluster0.m5ybl.mongodb.net/test
-//mongodb://localhost:27017/budget
-
-const url = 'mongodb+srv://admin:372zzl7rmFSIUNVZ@cluster0.m5ybl.mongodb.net/database'
+const db = require("./config/keys").mongoURI;
 const mongoose = require('mongoose');
 const budgetModel = require("./models/chart_schema");
 const userModel = require("./models/user_schema");
@@ -114,7 +111,7 @@ app.use(function (err, req, res, next) {
 app.get('/api/budget', (req, res) => {
     //res.sendFile('budget-data2.json', {root: __dirname});
 
-    mongoose.connect(url, {
+    mongoose.connect(db, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     }).then(() => {
@@ -132,7 +129,7 @@ app.get('/api/budget', (req, res) => {
 });
 
 app.post('/api/budget', (req, res) => {
-    mongoose.connect(url, {
+    mongoose.connect(db, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     }).then(() => {
@@ -157,7 +154,7 @@ app.post('/api/budget', (req, res) => {
 
 
 app.post('/api/register', (req, res) => {
-    mongoose.connect(url, {
+    mongoose.connect(db, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     }).then(() => {
@@ -182,7 +179,7 @@ app.post('/api/register', (req, res) => {
 
 app.post('/api/login2', (req, res) => {
 
-    mongoose.connect(url, {
+    mongoose.connect(db, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     }).then(() => {
