@@ -15,7 +15,7 @@
 
 ## TO DO:
 - ~~remove Button component~~
-- change localhost:3001 to something else when live app is deployed
+- ~~change localhost:3001 to something else when live app is deployed~~
 - ~~remove /backend-api folder - unused~~
 - color picker in Dashboard (implement)
 - homepage
@@ -28,3 +28,7 @@
     - monthly
 - token expire after 60s
 - make sure all text boxes are filled in on dashboard before POST to mongo
+
+## Server location:
+- node server (API): http://104.236.19.163:3001/
+- React (frontend): http://104.236.24.42/

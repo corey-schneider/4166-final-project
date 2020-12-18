@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import { JsonToTable } from "react-json-to-table";
 
-let URL = 'http://localhost:3001';
+let URL = 'http://104.236.19.163:3001';
 
 function JsonTable() {
 	const [data, setData] = useState([]);
