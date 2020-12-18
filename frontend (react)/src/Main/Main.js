@@ -29,7 +29,7 @@ class Main extends Component {
 
 	checkLoginStatus() {
         const token = localStorage.getItem('jwt');
-		axios.get("http://104.236.19.163:3001/users/authentication", { 
+		axios.get("http://localhost:3001/users/authentication", { 
             headers: {
                 'Authorization': `Bearer ${token}`
 			}
@@ -102,7 +102,7 @@ class Main extends Component {
 					</ul>
 				</div>
 
-				<div>Logged in status: {this.state.loggedInStatus}</div>
+				<div>Logged in status (new): {this.state.loggedInStatus}</div>
 				<div id="wrap">
 					<div className="block2">
 						<div className="container2">

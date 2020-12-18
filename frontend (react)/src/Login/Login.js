@@ -5,7 +5,7 @@ import { HashRouter, NavLink } from "react-router-dom";
 import axios from "axios";
 
 
-    let URL = 'http://104.236.19.163:3001'; // TODO change this when put on live web
+    let URL = 'http://localhost:3001';
     let name = '';
 
 class Login extends Component {

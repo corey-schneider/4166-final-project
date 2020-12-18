@@ -4,7 +4,7 @@ import axios from "axios";
 // import Popup from 'react-popup';
 // import ReactDOM from 'react-dom';
 
-let URL = "http://104.236.19.163:3001"; // TODO change this when put on live web
+let URL = "http://localhost:3001";
 
 class Register extends Component {
   

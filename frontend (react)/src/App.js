@@ -27,7 +27,7 @@ class App extends React.Component {
   
   async callAPI() {
     let token = localStorage.getItem('jwt');
-    const res = await axios.get("http://104.236.19.163:3001/api/dashboard", {
+    const res = await axios.get("http://localhost:3001/api/dashboard", {
       headers: {
         'Authorization': `Bearer ${token}`,
       },

@@ -12,7 +12,7 @@ export default function withAuth(ComponentToProtect) {
     }
 
     componentDidMount() {
-      fetch('http://104.236.19.163:3001/api/checkToken')
+      fetch('http://localhost:3001/api/checkToken')
         .then(res => {
           if (res.status === 200) {
             this.setState({ loading: false });
