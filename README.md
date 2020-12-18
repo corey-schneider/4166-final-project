@@ -17,12 +17,12 @@
 - ~~remove Button component~~
 - change localhost:3001 to something else when live app is deployed
 - ~~remove /backend-api folder - unused~~
-- color picker in Dashboard
+- color picker in Dashboard (implement)
 - homepage
 - log in / out
-- sign up (registration)
+- ~~sign up (registration)~~
 - configure budgets
-    - add
+    - ~~add~~
     - remove
     - edit
     - monthly
