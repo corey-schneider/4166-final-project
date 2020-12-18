@@ -87,12 +87,6 @@ class Main extends Component {
 						<li>
 							<NavLink to="/dashboard">Dashboard</NavLink>
 						</li>
-						<li>
-							<a href="">Configure budgets</a>
-						</li>
-						<li>
-							<NavLink to="/secret">Secret</NavLink>
-						</li>
 						<li className="dropdown">
 							<NavLink to="/login">Log in</NavLink>
 							<div className="dropdown-content">

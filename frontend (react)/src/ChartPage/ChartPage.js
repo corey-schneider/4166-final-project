@@ -54,9 +54,6 @@ function ChartPage() {
      />
      <hr/>
      
-     <Line
-     data={data.Data}
-     />
    </div>
  );
 }

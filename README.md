@@ -1,6 +1,32 @@
-# Corey Schneider - ITIS 4166 - Final Project
+# Corey Schneider - Personal Budget application
 
-## Using React and Node.js
+### This application was created using [React](https://reactjs.org/), [Node.js](https://nodejs.org/en/), and [MongoDB](https://www.mongodb.com/)
+
+## Personal Budget layout -- what doesn't work is *italicized*
+- Navigation
+- Home page
+    - Has information, welcomes the user
+- Dashboard page
+    - Pulls data from MongoDB (React -> Nodejs server -> MongoDB)
+    - Add item to budget
+    - chartjs pie chart and bar chart
+    - JsonTable table
+    - *Remove item from budget*
+    - *Edit budget*
+- Users
+    - All users are stored in a MongoDB database
+        - Registration and log in both utilize the database
+    - User schema includes:
+        - first name
+        - last name
+        - user name
+        - created date
+        - password hash -- None of the passwords are stored in clear text
+    - Log in page (React -> Nodejs server -> MongoDB)
+        - Log in POST using axios
+        - jwt token saved in browser
+    - Registration page (React -> Nodejs server -> MongoDB)
+        - Registration POST using axios
 
 ##### Thank you to the resources who've helped me during development:
 - [General understanding of React](https://www.youtube.com/watch?v=fnpmR6Q5lEc&ab_channel=Simplilearn)
@@ -12,10 +38,11 @@
 - [react-json-to-table](https://www.npmjs.com/package/react-json-to-table)
 - [Node.js and MongoDB authentication / registration / login](https://jasonwatmore.com/post/2018/06/14/nodejs-mongodb-simple-api-for-authentication-registration-and-user-management)
 - Thank you to our TA Akshay Popli for meeting with me and answering my questions
+- [More advanced users](https://jasonwatmore.com/post/2018/06/14/nodejs-mongodb-simple-api-for-authentication-registration-and-user-management)
 
 ## TO DO:
 - ~~remove Button component~~
-- ~~change localhost:3001 to something else when live app is deployed~~
+- ~~change localhost:3001 to IP when live app is deployed~~
 - ~~remove /backend-api folder - unused~~
 - color picker in Dashboard (implement)
 - ~~homepage~~
@@ -26,7 +53,7 @@
     - remove
     - edit
     - monthly
-- token expire after 60s
+- token expire after 60s <-- extra credit
 - make sure all text boxes are filled in on dashboard before POST to mongo
 - remove Secret
 - remove Configure budgets
@@ -34,13 +61,15 @@
 - fix "logged in status"
 - fix Dashboard page
     - remove all function
-- nginx? see this post https://stackoverflow.com/questions/63143724/how-to-deploy-a-react-app-on-digital-ocean and the video by Rizwan mentions it as well
+- DigitalOcean
+    - ~~nginx for react~~
+    - ~~pm2 for node server~~
 
 ## Server location:
+- React (frontend): http://104.236.19.163/ or http://cschne11.tk/
 - Node server (API): http://104.236.19.163:3001/
-- React (frontend): http://104.236.24.42/
 
-## Additional helpful articles that I haven't used:
+## Additional helpful articles that were not used in this application:
 - https://faizanv.medium.com/authentication-for-your-react-and-express-application-w-json-web-tokens-923515826e0
 - https://github.com/faizanv/react-auth-example
 - https://jasonwatmore.com/post/2018/06/14/nodejs-mongodb-simple-api-for-authentication-registration-and-user-management (1 with CRUD)
@@ -53,5 +82,3 @@
 - https://www.youtube.com/watch?v=My3c4IQHq_Y&ab_channel=RizwanKhan deploy react, node, or express.js application to production | digital ocean
 - https://stackoverflow.com/questions/54730396/react-axios-401-unauthorized/54730601
 - https://www.digitalocean.com/community/tutorials/how-to-set-up-a-react-project-with-create-react-app
-
-`curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash`
