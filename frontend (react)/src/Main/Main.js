@@ -29,7 +29,7 @@ class Main extends Component {
 
 	checkLoginStatus() {
         const token = localStorage.getItem('jwt');
-		axios.get("http://104.236.19.163:3001/users/authentication", { 
+		axios.get("http://104.236.19.163:3001/users/authenticate", { 
             headers: {
                 'Authorization': `Bearer ${token}`
 			}
