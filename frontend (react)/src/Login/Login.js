@@ -152,7 +152,7 @@ class Login extends Component {
   render() {
     return (
         <div align="center">
-          <h1>Log in</h1>
+          {/* <h1>Log in</h1>
           <main>
             <div className="row">
                 <label htmlFor="username">Username: </label>
@@ -165,18 +165,16 @@ class Login extends Component {
             </div>
 
             <div>
-                <br/>
-                {/* <Button title="Login" onClick={() => this.handleLogin} /> */}
-                <button onClick={this.handleLogin}>Log in</button>
-            </div>
-        </main>
-        <br/><br/><br/><p>Don't have an account? <NavLink to="/register">Sign up</NavLink> now!</p>
+                <br/> */}
+                {/* <button onClick={this.handleLogin}>Log in</button> */}
+            {/* </div>
+        </main> */}
 
 
         <br/>
 
         <form onSubmit={this.onSubmit}>
-        <h1>Login Below!</h1>
+        <h1>Log in </h1>
         <input
           type="username"
           name="username"
@@ -184,7 +182,7 @@ class Login extends Component {
           value={this.state.username}
           onChange={this.handleInputChange}
           required
-        />
+        /><br/>
         <input
           type="password"
           name="password"
@@ -192,9 +190,10 @@ class Login extends Component {
           value={this.state.password}
           onChange={this.handleInputChange}
           required
-        />
+        /><br/><br/>
         <input type="submit" value="Submit"/>
       </form>
+        <br/><p>Don't have an account? <NavLink to="/register">Sign up</NavLink> now!</p>
 
 
         </div>

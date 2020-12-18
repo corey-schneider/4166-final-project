@@ -96,7 +96,7 @@ class Main extends Component {
 					</ul>
 				</div>
 
-				<div>Logged in status (new): {this.state.loggedInStatus}</div>
+				{/* <div>Logged in status: {this.state.loggedInStatus}</div> */}
 				<div id="wrap">
 					<div className="block2">
 						<div className="container2">

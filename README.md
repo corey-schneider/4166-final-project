@@ -3,30 +3,33 @@
 ### This application was created using [React](https://reactjs.org/), [Node.js](https://nodejs.org/en/), and [MongoDB](https://www.mongodb.com/)
 
 ## Personal Budget layout -- what doesn't work is *italicized*
-- Navigation
-- Home page
-    - Has information, welcomes the user
-- Dashboard page
-    - Pulls data from MongoDB (React -> Nodejs server -> MongoDB)
-    - Add item to budget
-    - chartjs pie chart and bar chart
-    - JsonTable table
-    - *Remove item from budget*
-    - *Edit budget*
-- Users
-    - All users are stored in a MongoDB database
-        - Registration and log in both utilize the database
-    - User schema includes:
-        - first name
-        - last name
-        - user name
-        - created date
-        - password hash -- None of the passwords are stored in clear text
-    - Log in page (React -> Nodejs server -> MongoDB)
-        - Log in POST using axios
-        - jwt token saved in browser
-    - Registration page (React -> Nodejs server -> MongoDB)
-        - Registration POST using axios
+- Single Page Application (Main/Main.js)
+    - Navigation
+    - Home page
+        - Has information, welcomes the user
+    - Dashboard page
+        - Pulls data from MongoDB (React -> Nodejs server -> MongoDB)
+        - Add item to budget
+        - chartjs pie chart and bar chart
+        - JsonTable table
+        - *Remove item from budget*
+        - *Edit budget*
+    - Users
+        - All users are stored in a MongoDB database
+            - Registration and log in both utilize the database
+        - User schema includes:
+            - first name
+            - last name
+            - user name
+            - created date
+            - password hash -- None of the passwords are stored in clear text
+        - Log in page (React -> Nodejs server -> MongoDB)
+            - Log in POST using axios
+            - jwt token saved in browser
+            - Reject if username or password do not match database
+        - Registration page (React -> Nodejs server -> MongoDB)
+            - Registration POST using axios
+            - Reject if username is taken
 
 ##### Thank you to the resources who've helped me during development:
 - [General understanding of React](https://www.youtube.com/watch?v=fnpmR6Q5lEc&ab_channel=Simplilearn)
@@ -44,7 +47,6 @@
 - ~~remove Button component~~
 - ~~change localhost:3001 to IP when live app is deployed~~
 - ~~remove /backend-api folder - unused~~
-- color picker in Dashboard (implement)
 - ~~homepage~~
 - log in / out
 - ~~sign up (registration)~~
@@ -55,15 +57,27 @@
     - monthly
 - token expire after 60s <-- extra credit
 - make sure all text boxes are filled in on dashboard before POST to mongo
-- remove Secret
-- remove Configure budgets
+- ~~remove Secret~~
+- ~~remove Configure budgets~~
 - remove 2nd login option
 - fix "logged in status"
 - fix Dashboard page
     - remove all function
+    - color picker (implement)
 - DigitalOcean
     - ~~nginx for react~~
     - ~~pm2 for node server~~
+- Users
+    - ~~Log in~~
+        - ~~Save token~~
+        - ~~Request from Node -> MongoDB~~
+        - ~~Check if account exists~~
+    - Log out
+        - Remove token
+    - ~~Register~~
+        - ~~Send to MongoDB~~
+        - ~~Check if username is taken~~
+            - ~~Reject if taken~~
 
 ## Server location:
 - React (frontend): http://104.236.19.163/ or http://cschne11.tk/
