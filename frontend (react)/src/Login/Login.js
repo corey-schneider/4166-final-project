@@ -52,25 +52,49 @@ class Login extends Component {
     //     });
     // }
 
+    // onSubmit = (event) => {
+    //     event.preventDefault();
+    //     fetch(URL+"/users/authenticate", {
+    //         method: 'POST',
+    //         body: JSON.stringify(this.state),
+    //         headers: {
+    //           'Content-Type': 'application/json'
+    //         }
+    //     }).then(res => {
+    //         if (res.status === 200) {
+    //             console.log(res);
+    //             this.props.history.push('/');
+    //           } else {
+    //             const error = new Error(res.error);
+    //             throw error;
+    //           }
+    //     }).catch(err => {
+    //         console.error(err);
+    //         alert('Error logging in please try again');
+    //       });
+    // }
+
+    //This works much better.
     onSubmit = (event) => {
         event.preventDefault();
-        fetch(URL+"/users/authenticate", {
-            method: 'POST',
-            body: JSON.stringify(this.state),
-            headers: {
-              'Content-Type': 'application/json'
-            }
-        }).then(res => {
+        const data = {
+            username: this.state.username,
+            password: this.state.password
+        };
+        axios.post(URL+"/users/authenticate", data).then(res => {
             if (res.status === 200) {
+                console.log(res);
+                localStorage.setItem('jwt', res.data.token)
                 this.props.history.push('/');
               } else {
                 const error = new Error(res.error);
                 throw error;
               }
+
         }).catch(err => {
             console.error(err);
-            alert('Error logging in please try again');
-          });
+            alert('Invalid username or password.');
+        });
     }
     
     async handleLogin() {

@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const secret = 'mysecretsshhh';
+const secret = 'eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTYwODIyNTY2NywiaWF0IjoxNjA4MjI1NjY3fQ.IiPlRlSLoylEIOglBnK4F8HmWM0aSEftycr-nFSeTT4';
 
 const withAuth = function(req, res, next) {
   const token = 
@@ -15,7 +15,7 @@ const withAuth = function(req, res, next) {
       if (err) {
         res.status(401).send('Unauthorized: Invalid token');
       } else {
-        req.email = decoded.email;
+        req.username = decoded.username;
         next();
       }
     });

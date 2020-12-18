@@ -9,8 +9,69 @@ import Login from "../Login/Login";
 import Register from "../Register/Register";
 import Secret from "../Secret/Secret";
 import withAuth from "../withAuth"; //TODO move this
+import axios from "axios";
 
 class Main extends Component {
+
+
+	constructor() {
+		super();
+	
+		this.state = {
+		  loggedInStatus: "NOT_LOGGED_IN",
+		  user: {}
+		};
+	
+		this.handleLogin = this.handleLogin.bind(this);
+		this.handleLogout = this.handleLogout.bind(this);
+	  }
+
+
+	checkLoginStatus() {
+        const token = localStorage.getItem('jwt');
+		axios.get("http://localhost:3001/logged_in", { 
+            headers: {
+                'Authorization': `Bearer ${token}`
+			}
+		 }).then(res => {
+			this.setState({
+				loggedInStatus: "LOGGED_IN",
+				user: res.data.username
+			});
+			console.log("logged in? ", res);
+			if (res.status === 200 && this.state.loggedInStatus === "NOT_LOGGED_IN") {
+				this.setState({
+					loggedInStatus: "LOGGED_IN",
+					user: res.data.username
+				});
+			} else if (!res.status === 200 & (this.state.loggedInStatus === "LOGGED_IN")) {
+				this.setState({
+					loggedInStatus: "NOT_LOGGED_IN",
+					user: {}
+				});
+			}
+		}).catch(error => {
+			console.log("check login error", error);
+		});
+	}
+
+	componentDidMount() {
+		this.checkLoginStatus();
+	}
+
+	handleLogout() {
+		this.setState({
+		  loggedInStatus: "NOT_LOGGED_IN",
+		  user: {}
+		});
+	  }
+	
+	  handleLogin(data) {
+		this.setState({
+		  loggedInStatus: "LOGGED_IN",
+		  user: data.username
+		});
+	  }
 	
 	render() {
 		return (
@@ -41,6 +102,7 @@ class Main extends Component {
 					</ul>
 				</div>
 
+				<div>Logged in status {this.state.loggedInStatus}</div>
 				<div id="wrap">
 					<div className="block2">
 						<div className="container2">
