@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const userService = require('./user.service');
+const cors = require('cors');
 
 // routes
 router.post('/authenticate', authenticate);
@@ -12,6 +13,8 @@ router.put('/:id', update);
 router.delete('/:id', _delete);
 
 module.exports = router;
+
+router.use(cors());
 
 function authenticate(req, res, next) {
     // res.cookie('token', req.body.token, { httpOnly: true }).sendStatus(200);
