@@ -29,15 +29,15 @@ class Main extends Component {
 
 	checkLoginStatus() {
         const token = localStorage.getItem('jwt');
-		axios.get("http://localhost:3001/logged_in", { 
+		axios.get("http://localhost:3001/users/authentication", { 
             headers: {
                 'Authorization': `Bearer ${token}`
 			}
 		 }).then(res => {
-			this.setState({
-				loggedInStatus: "LOGGED_IN",
-				user: res.data.username
-			});
+			// this.setState({
+			// 	loggedInStatus: "LOGGED_IN",
+			// 	user: res.data.username
+			// });
 			console.log("logged in? ", res);
 			if (res.status === 200 && this.state.loggedInStatus === "NOT_LOGGED_IN") {
 				this.setState({
@@ -102,7 +102,7 @@ class Main extends Component {
 					</ul>
 				</div>
 
-				<div>Logged in status {this.state.loggedInStatus}</div>
+				<div>Logged in status: {this.state.loggedInStatus}</div>
 				<div id="wrap">
 					<div className="block2">
 						<div className="container2">
@@ -110,7 +110,8 @@ class Main extends Component {
 							<div className="content">
 								<Route exact path="/" component={HomePage} />
 								<Route path="/dashboard" component={Dashboard} />
-								<Route path="/login" component={Login} />
+								{/* <Route path="/login" component={Login} /> */}
+								<Route path="/login" render={props => (<Login {...props} handleLogin={this.handleLogin} handleLogout={this.handleLougout} loggedInStatus={this.state.loggedInStatus} />)} />
 								<Route path="/register" component={Register} />
 								<Route path="/secret" component={withAuth(Secret)} />
 							</div>
@@ -128,6 +129,7 @@ class Main extends Component {
 						</div>
 					</footer>
 				</div>
+				
 
 			</HashRouter>
 		);

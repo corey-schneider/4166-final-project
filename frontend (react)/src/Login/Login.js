@@ -154,13 +154,13 @@ class Login extends Component {
         <div align="center">
           <h1>Log in</h1>
           <main>
-            <div class="row">
-                <label for="username">Username: </label>
+            <div className="row">
+                <label htmlFor="username">Username: </label>
                 <input type="text" name="username" id="username"/>
             </div>
 
-            <div class="row">
-                <label for="password">Password: </label>
+            <div className="row">
+                <label htmlFor="password">Password: </label>
                 <input type="text" name="password" id="password"/>
             </div>
 

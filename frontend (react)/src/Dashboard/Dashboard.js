@@ -46,17 +46,17 @@ class Dashboard extends Component {
 				<h1>Add an item to your budget:</h1>
 				<main>
 					<div className="row">
-						<label for="budgetName">Budget Name (i.e food): </label>
+						<label htmlFor="budgetName">Budget Name (i.e food): </label>
 						<input type="text" name="budgetName" id="budgetName" />
 					</div>
 
 					<div className="row">
-						<label for="amount">Amount ($): </label>
+						<label htmlFor="amount">Amount ($): </label>
 						<input type="text" name="amount" id="amount" />
 					</div>
 
 					<div className="row">
-						<label for="color">Color ({this.props.color}): </label>
+						<label htmlFor="color">Color ({this.props.color}): </label>
 						<input type="text" name="color" id="color" />
             <ColorPicker/>
 					</div>

@@ -46,21 +46,21 @@ class Register extends Component {
 				<h1>Register</h1>
         <i>(All fields are required)</i><br/><br/>
 				<main>
-					<div class="row">
-						<label for="firstName">First name: </label>
+					<div className="row">
+						<label htmlFor="firstName">First name: </label>
 						<input type="text" name="firstName" id="firstName" />
 					</div>
-					<div class="row">
-						<label for="lastName">Last name: </label>
+					<div className="row">
+						<label htmlFor="lastName">Last name: </label>
 						<input type="text" name="lastName" id="lastName" />
 					</div>
-					<div class="row">
-						<label for="username">Username: </label>
+					<div className="row">
+						<label htmlFor="username">Username: </label>
 						<input type="text" name="username" id="username" />
 					</div>
 
-					<div class="row">
-						<label for="password">Password: </label>
+					<div className="row">
+						<label htmlFor="password">Password: </label>
 						<input type="text" name="password" id="password" />
 					</div>
 
