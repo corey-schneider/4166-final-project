@@ -31,7 +31,7 @@ function JsonTable() {
 
 	return (
 		<div className="JsonTable">
-			<h3>Your budgets:</h3>
+			<h3>Your budgets for this month:</h3>
 			<JsonToTable json={data} />
 		</div>
 	);

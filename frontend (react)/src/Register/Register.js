@@ -27,7 +27,7 @@ class Register extends Component {
 				document.getElementById("username").value = "";
 				document.getElementById("password").value = "";
 				//if(res && res.data.success) {
-				alert("Registration successful, " + res.data.username + "!");
+				alert("Registration successful, " + data.username + "!");
 				//}
 			}, (error) => {
 				if (error.response.status === 400) {

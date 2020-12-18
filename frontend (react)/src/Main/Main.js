@@ -14,64 +14,64 @@ import axios from "axios";
 class Main extends Component {
 
 
-	constructor() {
-		super();
+	// constructor() {
+	// 	super();
 	
-		this.state = {
-		  loggedInStatus: "NOT_LOGGED_IN",
-		  user: {}
-		};
+	// 	this.state = {
+	// 	  loggedInStatus: "NOT_LOGGED_IN",
+	// 	  user: {}
+	// 	};
 	
-		this.handleLogin = this.handleLogin.bind(this);
-		this.handleLogout = this.handleLogout.bind(this);
-	  }
+	// 	this.handleLogin = this.handleLogin.bind(this);
+	// 	this.handleLogout = this.handleLogout.bind(this);
+	//   }
 
 
-	checkLoginStatus() {
-        const token = localStorage.getItem('jwt');
-		axios.get("http://104.236.19.163:3001/users/authenticate", { 
-            headers: {
-                'Authorization': `Bearer ${token}`
-			}
-		 }).then(res => {
-			// this.setState({
-			// 	loggedInStatus: "LOGGED_IN",
-			// 	user: res.data.username
-			// });
-			console.log("logged in? ", res);
-			if (res.status === 200 && this.state.loggedInStatus === "NOT_LOGGED_IN") {
-				this.setState({
-					loggedInStatus: "LOGGED_IN",
-					user: res.data.username
-				});
-			} else if (!res.status === 200 & (this.state.loggedInStatus === "LOGGED_IN")) {
-				this.setState({
-					loggedInStatus: "NOT_LOGGED_IN",
-					user: {}
-				});
-			}
-		}).catch(error => {
-			console.log("check login error", error);
-		});
-	}
+	// checkLoginStatus() {
+    //     const token = localStorage.getItem('jwt');
+	// 	axios.get("http://104.236.19.163:3001/users/authenticate", { 
+    //         headers: {
+    //             'Authorization': `Bearer ${token}`
+	// 		}
+	// 	 }).then(res => {
+	// 		// this.setState({
+	// 		// 	loggedInStatus: "LOGGED_IN",
+	// 		// 	user: res.data.username
+	// 		// });
+	// 		console.log("logged in? ", res);
+	// 		if (res.status === 200 && this.state.loggedInStatus === "NOT_LOGGED_IN") {
+	// 			this.setState({
+	// 				loggedInStatus: "LOGGED_IN",
+	// 				user: res.data.username
+	// 			});
+	// 		} else if (!res.status === 200 & (this.state.loggedInStatus === "LOGGED_IN")) {
+	// 			this.setState({
+	// 				loggedInStatus: "NOT_LOGGED_IN",
+	// 				user: {}
+	// 			});
+	// 		}
+	// 	}).catch(error => {
+	// 		console.log("check login error", error);
+	// 	});
+	// }
 
-	componentDidMount() {
-		this.checkLoginStatus();
-	}
+	// componentDidMount() {
+	// 	//this.checkLoginStatus();
+	// }
 
-	handleLogout() {
-		this.setState({
-		  loggedInStatus: "NOT_LOGGED_IN",
-		  user: {}
-		});
-	  }
+	// handleLogout() {
+	// 	this.setState({
+	// 	  loggedInStatus: "NOT_LOGGED_IN",
+	// 	  user: {}
+	// 	});
+	//   }
 	
-	  handleLogin(data) {
-		this.setState({
-		  loggedInStatus: "LOGGED_IN",
-		  user: data.username
-		});
-	  }
+	//   handleLogin(data) {
+	// 	this.setState({
+	// 	  loggedInStatus: "LOGGED_IN",
+	// 	  user: data.username
+	// 	});
+	//   }
 	
 	render() {
 		return (
@@ -104,8 +104,8 @@ class Main extends Component {
 							<div className="content">
 								<Route exact path="/" component={HomePage} />
 								<Route path="/dashboard" component={Dashboard} />
-								{/* <Route path="/login" component={Login} /> */}
-								<Route path="/login" render={props => (<Login {...props} handleLogin={this.handleLogin} handleLogout={this.handleLougout} loggedInStatus={this.state.loggedInStatus} />)} />
+								<Route path="/login" component={Login} />
+								{/* <Route path="/login" render={props => (<Login {...props} handleLogin={this.handleLogin} handleLogout={this.handleLougout} loggedInStatus={this.state.loggedInStatus} />)} /> */}
 								<Route path="/register" component={Register} />
 								<Route path="/secret" component={withAuth(Secret)} />
 							</div>

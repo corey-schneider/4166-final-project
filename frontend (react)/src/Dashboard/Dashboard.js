@@ -14,6 +14,9 @@ class Dashboard extends Component {
 		super(props);
     //this.handleBudgetAdd = this.handleBudgetAdd.bind(this);
 	}
+	state = {
+		background: '#ff0000',
+	}
 
 	async handleBudgetAdd() {
     
@@ -39,6 +42,10 @@ class Dashboard extends Component {
     alert("still working on it");
   }
 
+  handleChange = (color, event) => {
+	this.setState({ background: color.hex });
+	alert("background is now ");
+  };
 
 	render() {
 		return (
@@ -46,28 +53,30 @@ class Dashboard extends Component {
 				<h1>Add an item to your budget:</h1>
 				<main>
 					<div className="row">
-						<label htmlFor="budgetName">Budget Name (i.e food): </label>
-						<input type="text" name="budgetName" id="budgetName" />
+						<label htmlFor="budgetName">Budget Name: </label>
+						<input type="text" name="budgetName" id="budgetName" placeholder="Eating out" />
 					</div>
 
 					<div className="row">
-						<label htmlFor="amount">Amount ($): </label>
-						<input type="text" name="amount" id="amount" />
+						<label htmlFor="amount">Amount (numbers only): </label>
+						<input type="text" name="amount" id="amount" placeholder="55" />
 					</div>
 
 					<div className="row">
-						<label htmlFor="color">Color ({this.props.color}): </label>
-						<input type="text" name="color" id="color" />
-            <ColorPicker/>
+						<label htmlFor="color">Color: </label>
+						<input type="text" name="color" id="color" placeholder="#FF0000" />
+						<p>Use the chart below to find a color you like, then copy the Hex code into the color field. Be sure to include the # symbol!</p>
+            <ColorPicker onChange={ this.handleChange }/>
+			
 					</div>
 
 					<div>
 						<br />
-						<button onClick={this.handleBudgetAdd}>Submit</button>
+						<button onClick={this.handleBudgetAdd}>Add to budget</button>
 					</div>
-          <div align="center">
+          {/* <div align="center">
             <button onClick={this.handleDeleteAll}>Delete ALL</button>
-          </div>
+          </div> */}
           <br/><hr/>
           <div align="center">
             <JsonTable/>
