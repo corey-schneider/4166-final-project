@@ -31,6 +31,10 @@
             - Registration POST using axios
             - Reject if username is taken
 
+## Server location:
+- React (frontend): http://104.236.19.163/ or http://cschne11.tk/
+- Node server (API): http://104.236.19.163:3001/
+
 ##### Thank you to the resources who've helped me during development:
 - [General understanding of React](https://www.youtube.com/watch?v=fnpmR6Q5lEc&ab_channel=Simplilearn)
 - [Creating React SPA](https://www.kirupa.com/react/creating_single_page_app_react_using_react_router.htm)
@@ -42,6 +46,7 @@
 - [Node.js and MongoDB authentication / registration / login](https://jasonwatmore.com/post/2018/06/14/nodejs-mongodb-simple-api-for-authentication-registration-and-user-management)
 - Thank you to our TA Akshay Popli for meeting with me and answering my questions
 - [More advanced users](https://jasonwatmore.com/post/2018/06/14/nodejs-mongodb-simple-api-for-authentication-registration-and-user-management)
+
 
 ## TO DO:
 - ~~remove Button component~~
@@ -78,10 +83,11 @@
         - ~~Send to MongoDB~~
         - ~~Check if username is taken~~
             - ~~Reject if taken~~
+- gitignore
+    - ~~Remove MongoDB password from these locations:~~ DONE, what you see is an old invalid password.
+        - ~~/backend (nodejs)/config/keys.js~~
+        - ~~/backend (nodejs)/config.json~~
 
-## Server location:
-- React (frontend): http://104.236.19.163/ or http://cschne11.tk/
-- Node server (API): http://104.236.19.163:3001/
 
 ## Additional helpful articles that were not used in this application:
 - https://faizanv.medium.com/authentication-for-your-react-and-express-application-w-json-web-tokens-923515826e0
