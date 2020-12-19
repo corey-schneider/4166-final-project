@@ -23,7 +23,7 @@ class Dashboard extends Component {
     const data = {
       title: document.getElementById("budgetName").value,
       budget: parseInt(document.getElementById("amount").value),
-      backgroundColor: document.getElementById("color").value
+      backgroundColor: document.getElementById("coloring").textContent
     }
 
     axios.post(URL+'/api/budget', data)
@@ -39,7 +39,7 @@ class Dashboard extends Component {
   }
 
   async handleDeleteAll() {
-    alert("still working on it");
+    alert("still working on it, is this ur color: "+document.getElementById("coloring").textContent);
   }
 
   handleChange = (color, event) => {
@@ -64,9 +64,8 @@ class Dashboard extends Component {
 
 					<div className="row">
 						<label htmlFor="color">Color: </label>
-						<input type="text" name="color" id="color" placeholder="#FF0000" />
-						<p>Use the chart below to find a color you like, then copy the Hex code into the color field. Be sure to include the # symbol!</p>
             <ColorPicker onChange={ this.handleChange }/>
+						<p>Use the chart below to find a color you like. It will automatically apply!</p>
 			
 					</div>
 
@@ -74,9 +73,9 @@ class Dashboard extends Component {
 						<br />
 						<button onClick={this.handleBudgetAdd}>Add to budget</button>
 					</div>
-          {/* <div align="center">
+          { <div align="center">
             <button onClick={this.handleDeleteAll}>Delete ALL</button>
-          </div> */}
+          </div> }
           <br/><hr/>
           <div align="center">
             <JsonTable/>
