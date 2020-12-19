@@ -1,4 +1,4 @@
 {
     "connectionString": "mongodb+srv://admin:jutjHDgmKaQWh5AB@cluster0.m5ybl.mongodb.net/database",
-    "secret": "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTYwODIyNTY2NywiaWF0IjoxNjA4MjI1NjY3fQ.IiPlRlSLoylEIOglBnK4F8HmWM0aSEftycr-nFSeTT4",
+    "secret": "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTYwODIyNTY2NywiaWF0IjoxNjA4MjI1NjY3fQ.IiPlRlSLoylEIOglBnK4F8HmWM0aSEftycr-nFSeTT4"
 }
