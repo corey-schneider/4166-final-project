@@ -115,7 +115,10 @@ class Login extends Component {
             //     this.getDashboard();
             // }
             if(res.status === 200) {
-                this.props.history.push('/');
+                console.log(res);
+                localStorage.setItem('jwt', res.data.token)
+                alert("successfully logged in "+username);
+                //this.props.history.push('/');
             }
         }, error => {
             if(error.response.status === 400) {
@@ -172,8 +175,8 @@ class Login extends Component {
 
 
         <br/>
-
-        <form onSubmit={this.onSubmit}>
+{/* this.onSubmit --> this.handleLogin */}
+        <form onSubmit={this.handleLogin}>
         <h1>Log in </h1>
         <input
           type="username"
