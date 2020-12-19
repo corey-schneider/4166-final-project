@@ -117,7 +117,6 @@ class Login extends Component {
             if(res.status === 200) {
                 console.log(res);
                 localStorage.setItem('jwt', res.data.token)
-                alert("successfully logged in "+username);
                 //this.props.history.push('/');
             }
         }, error => {
@@ -175,8 +174,8 @@ class Login extends Component {
 
 
         <br/>
-{/* this.onSubmit --> this.handleLogin */}
-        <form onSubmit={this.handleLogin}>
+
+        <form onSubmit={this.onSubmit}>
         <h1>Log in </h1>
         <input
           type="username"
