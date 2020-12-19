@@ -21,7 +21,7 @@ function ColorPicker() {
         }}
       /> */}
       
-      <p id="coloring" style={{color: "#FFFFFF" }}>{color.hex}</p>
+      <a id="coloring" style={{color: "#FFFFFF" }}>{color.hex}</a>
     </>
   );
 }

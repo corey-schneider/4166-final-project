@@ -63,7 +63,7 @@
 - fix "logged in status"
 - fix Dashboard page
     - remove all function
-    - color picker (implement)
+    - ~~color picker (implement)~~
 - DigitalOcean
     - ~~nginx for react~~
     - ~~pm2 for node server~~

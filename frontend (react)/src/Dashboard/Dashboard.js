@@ -28,7 +28,7 @@ class Dashboard extends Component {
 
     axios.post(URL+'/api/budget', data)
     .then(res => {
-      alert("Successfully added " + budgetName.value + " for $" + amount.value + " with color "+color.value+" to your budget!");
+      alert("Successfully added " + data.title + " for $" + data.budget + " with color "+data.backgroundColor+" to your budget!");
       window.location.reload(2500);
     }
       
@@ -65,7 +65,7 @@ class Dashboard extends Component {
 					<div className="row">
 						<label htmlFor="color">Color: </label>
             <ColorPicker onChange={ this.handleChange }/>
-						<p>Use the chart below to find a color you like. It will automatically apply!</p>
+						<p>Use the color picker to find a color you like. It will automatically apply!</p>
 			
 					</div>
 
@@ -74,7 +74,7 @@ class Dashboard extends Component {
 						<button onClick={this.handleBudgetAdd}>Add to budget</button>
 					</div>
           { <div align="center">
-            <button onClick={this.handleDeleteAll}>Delete ALL</button>
+            {/* <button onClick={this.handleDeleteAll}>Delete ALL</button> */}
           </div> }
           <br/><hr/>
           <div align="center">
