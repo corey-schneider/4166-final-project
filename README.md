@@ -83,10 +83,6 @@
         - ~~Send to MongoDB~~
         - ~~Check if username is taken~~
             - ~~Reject if taken~~
-- gitignore
-    - ~~Remove MongoDB password from these locations:~~ DONE, what you see is an old invalid password.
-        - ~~/backend (nodejs)/config/keys.js~~
-        - ~~/backend (nodejs)/config.json~~
 
 
 ## Additional helpful articles that were not used in this application:
