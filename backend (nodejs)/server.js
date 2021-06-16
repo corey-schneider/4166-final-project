@@ -21,7 +21,7 @@ const withAuth = require('./middleware');
 const cookieParser = require('cookie-parser');
 
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://104.236.19.163:3001');
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001');
     res.setHeader('Access-Control-Allow-Headers', 'Content-type,Authorization');
     next();
 });

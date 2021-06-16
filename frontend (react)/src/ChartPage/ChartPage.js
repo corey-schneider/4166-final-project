@@ -15,7 +15,7 @@ function ChartPage() {
 
  useEffect(() => {
 
-   axios.get("http://104.236.19.163:3001/api/budget").then(res => {
+   axios.get("http://localhost:3001/api/budget").then(res => {
        const personalBudget = res.data;
        console.log(res.data);
      setPosts(personalBudget);

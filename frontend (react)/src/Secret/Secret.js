@@ -9,7 +9,7 @@ class Secret extends Component {
   }
 
   componentDidMount() {
-    fetch('http://104.236.19.163:3001/api/secret')
+    fetch('http://localhost:3001/api/secret')
       .then(res => res.text())
       .then(res => this.setState({message: res}));
   }

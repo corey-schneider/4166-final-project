@@ -117,7 +117,7 @@ class Main extends Component {
 				<div id="footer" align="center">
 					<footer className="footer"><br />
 						<div className="container text-center py-3">
-							<span className="text-muted">Copyright &copy; <a href="https://github.com/corey-schneider">Corey Schneider</a> - Student at <a href="https://uncc.edu">UNC Charlotte</a>
+							<span className="text-muted">Copyright &copy; <a href="https://github.com/corey-schneider">Corey Schneider</a>
 							<br />
 							</span>
 						</div>

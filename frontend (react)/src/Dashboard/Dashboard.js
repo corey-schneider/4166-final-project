@@ -7,7 +7,7 @@ import JsonTable from "./JsonTable";
 import axios from "axios";
 
 
-let URL = "http://104.236.19.163:3001";
+let URL = "http://localhost:3001";
 
 class Dashboard extends Component {
 	constructor(props) {
